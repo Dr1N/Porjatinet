@@ -12,12 +12,11 @@ namespace Common
     public class JsonVideoRepository : IVideoRepository
     {
         private readonly string _fileName;
-        private readonly HashSet<Video> _videos;
+        private readonly HashSet<Video> _videos = new HashSet<Video>();
         
         public JsonVideoRepository(string fileName = "videos.json")
         {
             _fileName = fileName ?? throw new ArgumentNullException(nameof(fileName));
-            _videos = new HashSet<Video>();
             Initialize();
         }
         
@@ -29,21 +28,6 @@ namespace Common
             }
             
             _videos.Add(video);
-        }
-
-        public void Edit(string url, Video video)
-        {
-            if (string.IsNullOrEmpty(url))
-            {
-                throw new ArgumentException(nameof(url));
-            }
-
-            if (video == null)
-            {
-                throw new ArgumentNullException(nameof(video));
-            }
-            
-            throw new NotImplementedException();
         }
 
         public void Remove(Video video)
@@ -73,7 +57,7 @@ namespace Common
 
         public void Clear()
         {
-            throw new NotImplementedException();
+            _videos.Clear();
         }
 
         public Task SaveChangesAsync()

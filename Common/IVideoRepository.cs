@@ -8,8 +8,6 @@ namespace Common
     {
         void Add(Video video);
 
-        void Edit(string url, Video video);
-        
         void Remove(Video video);
 
         void Remove(string url);
