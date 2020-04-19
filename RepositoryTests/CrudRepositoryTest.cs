@@ -53,12 +53,12 @@ namespace RepositoryTests
             // Arrange
 
             var repo = new JsonVideoRepository();
-           
+
             // Act
 
-            Assert.Throws<ArgumentNullException>(() =>  repo.Add(null));
+            Assert.Throws<ArgumentNullException>(() => repo.Add(null));
         }
-        
+
         private static Video MakeTestVideo()
         {
             return new Video("testUrl")

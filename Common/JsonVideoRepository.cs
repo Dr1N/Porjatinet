@@ -13,20 +13,20 @@ namespace Common
     {
         private readonly string _fileName;
         private readonly HashSet<Video> _videos = new HashSet<Video>();
-        
+
         public JsonVideoRepository(string fileName = "videos.json")
         {
             _fileName = fileName ?? throw new ArgumentNullException(nameof(fileName));
             Initialize();
         }
-        
+
         public void Add(Video video)
         {
             if (video == null)
             {
                 throw new ArgumentNullException(nameof(video));
             }
-            
+
             _videos.Add(video);
         }
 
@@ -68,9 +68,9 @@ namespace Common
         private void Initialize()
         {
             if (!File.Exists(_fileName)) return;
-            
+
             try
-            {    
+            {
                 var content = File.ReadAllText(_fileName);
                 var videos = JsonConvert.DeserializeObject<List<Video>>(content);
                 videos.ForEach(v => _videos.Add(v));

@@ -15,7 +15,7 @@ namespace Common
         Video GetVideo(string url);
 
         List<Video> GetAllVideos();
-        
+
         void Clear();
 
         Task SaveChangesAsync();

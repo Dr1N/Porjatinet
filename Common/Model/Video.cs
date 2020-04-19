@@ -5,7 +5,7 @@ namespace Common.Model
     public class Video
     {
         public string VideoUrl { get; }
-        
+
         public string PageUrl { get; set; }
 
         public string ImageUrl { get; set; }
@@ -26,7 +26,7 @@ namespace Common.Model
         {
             VideoUrl = url ?? throw new ArgumentNullException(nameof(url));
         }
-        
+
         public override bool Equals(object obj)
         {
             if (obj is Video other)
