@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Common;
 using Common.Model;
@@ -59,9 +60,130 @@ namespace RepositoryTests
             Assert.Throws<ArgumentNullException>(() => repo.Add(null));
         }
 
-        private static Video MakeTestVideo()
+        [Fact]
+        public void RemoveByVideo_Success_Test()
         {
-            return new Video("testUrl")
+            // Arrange
+
+            var repo = new JsonVideoRepository();
+            var video = MakeTestVideo();
+            repo.Add(video);
+            
+            // Act
+
+            repo.Remove(video);
+            var result = repo.GetVideo(video.VideoUrl);
+
+            // Assert
+
+            Assert.Null(result);
+        }
+        
+        [Fact]
+        public void RemoveByUrl_Success_Test()
+        {
+            // Arrange
+
+            var repo = new JsonVideoRepository();
+            var video = MakeTestVideo();
+            repo.Add(video);
+            
+            // Act
+
+            repo.Remove(video.VideoUrl);
+            var result = repo.GetVideo(video.VideoUrl);
+
+            // Assert
+
+            Assert.Null(result);
+        }
+
+        [Fact]
+        public void ClearVideos_Success_Test()
+        {
+            // Arrange
+
+            var repo = new JsonVideoRepository();
+            for (var i = 0; i < 10; i++)
+            {
+                var video = MakeTestVideo($"url_{i}");
+                repo.Add(video);  
+            }
+            
+            // Act
+
+            repo.Clear();
+            var result = repo.GetAllVideos();
+
+            // Assert
+
+            Assert.True(result.Count == 0);
+        }
+
+        [Fact]
+        public void GetVideo_Success_Test()
+        {
+            // Arrange
+
+            var repo = new JsonVideoRepository();
+            var video = MakeTestVideo();
+            repo.Add(video);  
+
+            // Act
+
+            var result = repo.GetVideo(video.VideoUrl);
+
+            // Assert
+
+            Assert.Equal(result, video);
+        }
+        
+        [Fact]
+        public void GetVideo_Null_Test()
+        {
+            // Arrange
+
+            var repo = new JsonVideoRepository();
+            var video = MakeTestVideo();
+            repo.Add(video);  
+
+            // Act
+
+            var result = repo.GetVideo("unknown");
+
+            // Assert
+
+            Assert.Null(result);
+        }
+        
+        [Fact]
+        public void GetAllVideos_Success_Test()
+        {
+            // Arrange
+            
+            const int count = 10;
+            var repo = new JsonVideoRepository();
+            var videoList = new List<Video>(10);
+            for (var i = 0; i < count; i++)
+            {
+                var video = MakeTestVideo($"url_{i}");
+                repo.Add(video);
+                videoList.Add(video);
+            }
+            
+            // Act
+
+            var result = repo.GetAllVideos();
+
+            // Assert
+
+            Assert.True(result.Count == count);
+            Assert.True(result.All(v => videoList.Contains(v)));
+        }
+        
+        private static Video MakeTestVideo(string url = "testUrl")
+        {
+            return new Video(url)
             {
                 PageUrl = "page",
                 ImageUrl = "image",

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using Common.Exception;
 using Common.Model;
 using Newtonsoft.Json;
@@ -32,21 +31,22 @@ namespace Common
 
         public void Remove(Video video)
         {
-            throw new NotImplementedException();
+            if (video == null)
+            {
+                return;
+            }
+
+            _videos.Remove(video);
         }
 
         public void Remove(string url)
         {
-            throw new NotImplementedException();
+            var video = _videos.FirstOrDefault(v => v.VideoUrl == url);
+            Remove(video);
         }
 
         public Video GetVideo(string url)
         {
-            if (string.IsNullOrEmpty(url))
-            {
-                throw new ArgumentException(nameof(url));
-            }
-
             return _videos.FirstOrDefault(v => string.Compare(v.VideoUrl, url, StringComparison.InvariantCultureIgnoreCase) == 0);
         }
 
@@ -60,9 +60,17 @@ namespace Common
             _videos.Clear();
         }
 
-        public Task SaveChangesAsync()
+        public void SaveChanges()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var json = JsonConvert.SerializeObject(_videos);
+                File.WriteAllText(_fileName,json);
+            }
+            catch (System.Exception e)
+            {
+               throw new RepositoryException($"Saving error: {e.Message}");
+            }
         }
 
         private void Initialize()
@@ -77,7 +85,7 @@ namespace Common
             }
             catch (System.Exception e)
             {
-                throw new RepositoryException(e.Message);
+                throw new RepositoryException($"Initialize error: {e.Message}");
             }
         }
     }

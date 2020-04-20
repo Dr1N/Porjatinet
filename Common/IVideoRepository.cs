@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
 using Common.Model;
 
 namespace Common
@@ -18,6 +17,6 @@ namespace Common
 
         void Clear();
 
-        Task SaveChangesAsync();
+        void SaveChanges();
     }
 }
