@@ -6,7 +6,7 @@ namespace Common.Model
     {
         public string VideoUrl { get; }
 
-        public string PageUrl { get; set; }
+        public string PostUrl { get; set; }
 
         public string ImageUrl { get; set; }
 

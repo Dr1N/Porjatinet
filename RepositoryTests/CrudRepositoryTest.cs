@@ -185,7 +185,7 @@ namespace RepositoryTests
         {
             return new Video(url)
             {
-                PageUrl = "page",
+                PostUrl = "page",
                 ImageUrl = "image",
                 Title = "title",
                 Description = "description",
