@@ -4,15 +4,13 @@ namespace Common.Model
 {
     public class Video
     {
-        public string VideoUrl { get; }
+        public string VideoUrl { get; set; }
 
         public string PostUrl { get; set; }
 
         public string ImageUrl { get; set; }
 
         public string Title { get; set; }
-
-        public string Description { get; set; }
 
         public string Category { get; set; }
 
@@ -21,6 +19,10 @@ namespace Common.Model
         public DateTime Publish { get; set; }
 
         public DateTime Parsed { get; set; }
+
+        public Video()
+        {
+        }
 
         public Video(string url)
         {

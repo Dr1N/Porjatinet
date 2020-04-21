@@ -68,7 +68,7 @@ namespace RepositoryTests
             var repo = new JsonVideoRepository();
             var video = MakeTestVideo();
             repo.Add(video);
-            
+
             // Act
 
             repo.Remove(video);
@@ -78,7 +78,7 @@ namespace RepositoryTests
 
             Assert.Null(result);
         }
-        
+
         [Fact]
         public void RemoveByUrl_Success_Test()
         {
@@ -87,7 +87,7 @@ namespace RepositoryTests
             var repo = new JsonVideoRepository();
             var video = MakeTestVideo();
             repo.Add(video);
-            
+
             // Act
 
             repo.Remove(video.VideoUrl);
@@ -107,9 +107,9 @@ namespace RepositoryTests
             for (var i = 0; i < 10; i++)
             {
                 var video = MakeTestVideo($"url_{i}");
-                repo.Add(video);  
+                repo.Add(video);
             }
-            
+
             // Act
 
             repo.Clear();
@@ -127,7 +127,7 @@ namespace RepositoryTests
 
             var repo = new JsonVideoRepository();
             var video = MakeTestVideo();
-            repo.Add(video);  
+            repo.Add(video);
 
             // Act
 
@@ -137,7 +137,7 @@ namespace RepositoryTests
 
             Assert.Equal(result, video);
         }
-        
+
         [Fact]
         public void GetVideo_Null_Test()
         {
@@ -145,7 +145,7 @@ namespace RepositoryTests
 
             var repo = new JsonVideoRepository();
             var video = MakeTestVideo();
-            repo.Add(video);  
+            repo.Add(video);
 
             // Act
 
@@ -155,12 +155,12 @@ namespace RepositoryTests
 
             Assert.Null(result);
         }
-        
+
         [Fact]
         public void GetAllVideos_Success_Test()
         {
             // Arrange
-            
+
             const int count = 10;
             var repo = new JsonVideoRepository();
             var videoList = new List<Video>(10);
@@ -170,7 +170,7 @@ namespace RepositoryTests
                 repo.Add(video);
                 videoList.Add(video);
             }
-            
+
             // Act
 
             var result = repo.GetAllVideos();
@@ -180,7 +180,7 @@ namespace RepositoryTests
             Assert.True(result.Count == count);
             Assert.True(result.All(v => videoList.Contains(v)));
         }
-        
+
         private static Video MakeTestVideo(string url = "testUrl")
         {
             return new Video(url)

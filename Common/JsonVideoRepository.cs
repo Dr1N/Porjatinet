@@ -15,7 +15,11 @@ namespace Common
 
         public JsonVideoRepository(string fileName = "videos.json")
         {
-            _fileName = fileName ?? throw new ArgumentNullException(nameof(fileName));
+            if (fileName == null)
+            {
+                throw new ArgumentNullException(nameof(fileName));
+            }
+            _fileName = Path.GetFullPath(fileName);
             Initialize();
         }
 
@@ -64,12 +68,12 @@ namespace Common
         {
             try
             {
-                var json = JsonConvert.SerializeObject(_videos);
-                File.WriteAllText(_fileName,json);
+                var json = JsonConvert.SerializeObject(_videos, Formatting.Indented);
+                File.WriteAllText(_fileName, json);
             }
             catch (System.Exception e)
             {
-               throw new RepositoryException($"Saving error: {e.Message}");
+                throw new RepositoryException($"Saving error: {e.Message}");
             }
         }
 
@@ -80,8 +84,11 @@ namespace Common
             try
             {
                 var content = File.ReadAllText(_fileName);
-                var videos = JsonConvert.DeserializeObject<List<Video>>(content);
-                videos.ForEach(v => _videos.Add(v));
+                if (!string.IsNullOrEmpty(content))
+                {
+                    var videos = JsonConvert.DeserializeObject<List<Video>>(content);
+                    videos.ForEach(v => _videos.Add(v));
+                }
             }
             catch (System.Exception e)
             {
