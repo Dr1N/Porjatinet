@@ -3,15 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Parser", "Parser\Parser.csproj", "{DA5214BD-D5EE-4B36-8C52-C32224D25A35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Parser", "Parser\Parser.csproj", "{DA5214BD-D5EE-4B36-8C52-C32224D25A35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viewer", "Viewer\Viewer.csproj", "{93B21CFA-74AE-47CB-B8B1-DCAAE6C94985}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{9ED48ADA-110A-4AD8-B7BD-25A2C4503ABD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{9ED48ADA-110A-4AD8-B7BD-25A2C4503ABD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3B6FC6A0-BC15-41C1-9A8F-4BDE2812D292}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryTests", "RepositoryTests\RepositoryTests.csproj", "{177EBDCC-8B31-416E-B1D3-A33088AF15A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryTests", "RepositoryTests\RepositoryTests.csproj", "{177EBDCC-8B31-416E-B1D3-A33088AF15A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viewer", "Viewer\Viewer.csproj", "{60F53679-5EB0-4AB1-A42C-7C228AC3DEE8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{18D9DE9D-D45A-4925-9EBD-05C9D5465A43}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +28,6 @@ Global
 		{DA5214BD-D5EE-4B36-8C52-C32224D25A35}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA5214BD-D5EE-4B36-8C52-C32224D25A35}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA5214BD-D5EE-4B36-8C52-C32224D25A35}.Release|Any CPU.Build.0 = Release|Any CPU
-		{93B21CFA-74AE-47CB-B8B1-DCAAE6C94985}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{93B21CFA-74AE-47CB-B8B1-DCAAE6C94985}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{93B21CFA-74AE-47CB-B8B1-DCAAE6C94985}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{93B21CFA-74AE-47CB-B8B1-DCAAE6C94985}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9ED48ADA-110A-4AD8-B7BD-25A2C4503ABD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9ED48ADA-110A-4AD8-B7BD-25A2C4503ABD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9ED48ADA-110A-4AD8-B7BD-25A2C4503ABD}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,14 +36,18 @@ Global
 		{177EBDCC-8B31-416E-B1D3-A33088AF15A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{177EBDCC-8B31-416E-B1D3-A33088AF15A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{177EBDCC-8B31-416E-B1D3-A33088AF15A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60F53679-5EB0-4AB1-A42C-7C228AC3DEE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60F53679-5EB0-4AB1-A42C-7C228AC3DEE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60F53679-5EB0-4AB1-A42C-7C228AC3DEE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60F53679-5EB0-4AB1-A42C-7C228AC3DEE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {0E69EA4D-6271-4843-AD31-BA0D12B6155B}
-	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{177EBDCC-8B31-416E-B1D3-A33088AF15A1} = {3B6FC6A0-BC15-41C1-9A8F-4BDE2812D292}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0E69EA4D-6271-4843-AD31-BA0D12B6155B}
 	EndGlobalSection
 EndGlobal

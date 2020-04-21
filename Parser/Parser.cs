@@ -265,7 +265,7 @@ namespace Parser
                     result = new Video(videoUrl)
                     {
                         PostUrl = url,
-                        ImageUrl = imageTag != null 
+                        ImageUrl = imageTag != null
                             ? $"{Url.TrimEnd('/')}/{imageTag.TrimStart('/')}"
                             : string.Empty,
                         Title = title,

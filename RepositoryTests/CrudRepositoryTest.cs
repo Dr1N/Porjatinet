@@ -45,7 +45,7 @@ namespace RepositoryTests
             // Assert
 
             Assert.True(result.Count == 1);
-            Assert.Equal(result.First(), video1);
+            Assert.Equal(result[0], video1);
         }
 
         [Fact]
@@ -188,7 +188,6 @@ namespace RepositoryTests
                 PostUrl = "page",
                 ImageUrl = "image",
                 Title = "title",
-                Description = "description",
                 Category = "category",
                 Author = "author",
                 Publish = new DateTime(2020, 04, 01),
