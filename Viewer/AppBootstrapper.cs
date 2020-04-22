@@ -2,7 +2,6 @@
 using Common;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using Viewer.ViewModels;
 
@@ -24,12 +23,11 @@ namespace Viewer
             _container.Singleton<IWindowManager, WindowManager>();
             _container.Singleton<IEventAggregator, EventAggregator>();
             _container.RegisterInstance(typeof(IVideoRepository), "videorepository", new JsonVideoRepository(DataPath));
-            GetType()
-                .Assembly
-                .GetTypes()
-                .Where(t => t.IsClass && t.Name.EndsWith("ViewModel"))
-                .ToList()
-                .ForEach(vm => _container.RegisterPerRequest(vm, vm.ToString(), vm));
+
+            _container.RegisterSingleton(typeof(MainViewModel), "main", typeof(MainViewModel));
+            _container.RegisterSingleton(typeof(FilterControlViewModel), "filter", typeof (FilterControlViewModel));
+            _container.RegisterSingleton(typeof(ListControlViewModel), "list", typeof(ListControlViewModel));
+            _container.RegisterSingleton(typeof(ViewControlViewModel), "view", typeof(ViewControlViewModel));
         }
 
         protected override void OnStartup(object sender, StartupEventArgs e)
