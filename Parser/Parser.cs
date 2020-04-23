@@ -265,9 +265,7 @@ namespace Parser
                     result = new Video(videoUrl)
                     {
                         PostUrl = url,
-                        ImageUrl = imageTag != null
-                            ? ProcessImage(imageTag)
-                            : string.Empty,
+                        ImageUrl = ProcessImage(imageTag),
                         Title = title,
                         Category = category,
                         Author = author,
@@ -345,10 +343,16 @@ namespace Parser
 
         private static string ProcessImage(string url)
         {
+            if (url == null)
+            {
+                return "https://cdn.pixabay.com/photo/2012/04/24/12/29/no-symbol-39767_960_720.png";
+            }
+
             if (!url.StartsWith("http"))
             {
                 return $"{Url.TrimEnd('/')}/{url.TrimStart('/')}";
             }
+
             return url;
         }
     }
