@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Common.Model;
+using System;
 
 namespace Viewer.Messages
 {
     internal class VideoSelectedMessage
     {
+        public Video Video { get; }
+
+        public VideoSelectedMessage(Video video)
+        {
+            Video = video ?? throw new ArgumentNullException(nameof(video));
+        }
     }
 }

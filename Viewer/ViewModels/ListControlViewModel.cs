@@ -34,6 +34,7 @@ namespace Viewer.ViewModels
                     _selectedVideo = value;
                     NotifyOfPropertyChange();
                     NotifyOfPropertyChange(() => SelectedVideo);
+                    SendMessage();
                 }
             }
         }
@@ -53,6 +54,15 @@ namespace Viewer.ViewModels
             {
                 List.Add(new VideoViewModel(video));
             }
+        }
+
+        private void SendMessage()
+        {
+            if (_selectedVideo == null)
+            {
+                return;
+            }
+            _eventAggregator.PublishOnUIThread(new VideoSelectedMessage(_selectedVideo.Video));
         }
 
         public void Handle(FilterChangedMessage message)
