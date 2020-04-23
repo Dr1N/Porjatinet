@@ -1,8 +1,8 @@
 ﻿using Caliburn.Micro;
 using Common;
 using System;
-using System.Diagnostics;
 using System.Linq;
+using Viewer.Messages;
 
 namespace Viewer.ViewModels
 {
@@ -13,6 +13,7 @@ namespace Viewer.ViewModels
 
         private string _selectedCategory;
         private string _selectedAutor;
+        private bool _isInitialize;
 
         public string Title { get; set; }
 
@@ -27,6 +28,7 @@ namespace Viewer.ViewModels
                 {
                     _selectedCategory = value;
                     NotifyOfPropertyChange();
+                    SendMessage();
                 }
             }
         }
@@ -42,6 +44,7 @@ namespace Viewer.ViewModels
                 {
                     _selectedAutor = value;
                     NotifyOfPropertyChange();
+                    SendMessage();
                 }
             }
         }
@@ -55,28 +58,54 @@ namespace Viewer.ViewModels
 
         public void Search()
         {
-            Debug.WriteLine(Title);
+            SendMessage();
         }
 
         private void InitFilters()
         {
-            var videos = _repository.GetAllVideos();
-            var categories = videos
-                .Select(v => v.Category)
-                .Where(c => !string.IsNullOrEmpty(c))
-                .Distinct()
-                .ToList();
-            Categories.Add("Все");
-            Categories.AddRange(categories);
-            var authors = videos
-                .Select(v => v.Author)
-                .Distinct()
-                .ToList();
-            Authors.Add("Все");
-            Authors.AddRange(authors);
+            _isInitialize = true;
+            try
+            {
+                var videos = _repository.GetAllVideos();
+                var categories = videos
+                    .Select(v => v.Category)
+                    .Where(c => !string.IsNullOrEmpty(c))
+                    .OrderBy(c => c)
+                    .Distinct()
+                    .ToList();
+                Categories.Add("Все");
+                Categories.AddRange(categories);
+                var authors = videos
+                    .Select(v => v.Author)
+                    .OrderBy(a => a)
+                    .Distinct()
+                    .ToList();
+                Authors.Add("Все");
+                Authors.AddRange(authors);
 
-            SelectedCategory = Categories[0];
-            SelectedAuthor = Authors[0];
+                SelectedCategory = Categories[0];
+                SelectedAuthor = Authors[0];
+            }
+            finally
+            {
+                _isInitialize = false;
+            }
+        }
+
+        private void SendMessage()
+        {
+            if (_isInitialize)
+            {
+                return;
+            }
+
+            var message = new FilterChangedMessage()
+            {
+                Author = SelectedAuthor,
+                Category = SelectedCategory,
+                Title = Title ?? string.Empty
+            };
+            _eventAggregator.PublishOnUIThread(message);
         }
     }
 }

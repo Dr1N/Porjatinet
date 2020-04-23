@@ -25,7 +25,7 @@ namespace Viewer
             _container.RegisterInstance(typeof(IVideoRepository), "videorepository", new JsonVideoRepository(DataPath));
 
             _container.RegisterSingleton(typeof(MainViewModel), "main", typeof(MainViewModel));
-            _container.RegisterSingleton(typeof(FilterControlViewModel), "filter", typeof (FilterControlViewModel));
+            _container.RegisterSingleton(typeof(FilterControlViewModel), "filter", typeof(FilterControlViewModel));
             _container.RegisterSingleton(typeof(ListControlViewModel), "list", typeof(ListControlViewModel));
             _container.RegisterSingleton(typeof(ViewControlViewModel), "view", typeof(ViewControlViewModel));
         }

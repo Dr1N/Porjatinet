@@ -74,6 +74,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Messages\FilterChangedMessage.cs" />
+    <Compile Include="Messages\VideoSelectedMessage.cs" />
     <Compile Include="ViewModels\FilterControlViewModel.cs" />
     <Compile Include="ViewModels\ListControlViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
