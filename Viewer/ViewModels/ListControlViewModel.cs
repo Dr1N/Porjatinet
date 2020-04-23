@@ -1,6 +1,7 @@
 ﻿using Caliburn.Micro;
 using Common;
 using System;
+using System.Linq;
 
 namespace Viewer.ViewModels
 {
@@ -20,7 +21,7 @@ namespace Viewer.ViewModels
 
         private void InitList()
         {
-            foreach (var video in _repository.GetAllVideos())
+            foreach (var video in _repository.GetAllVideos().OrderByDescending(v => v.Publish))
             {
                 List.Add(new VideoViewModel(video));
             }

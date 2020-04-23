@@ -266,7 +266,7 @@ namespace Parser
                     {
                         PostUrl = url,
                         ImageUrl = imageTag != null
-                            ? $"{Url.TrimEnd('/')}/{imageTag.TrimStart('/')}"
+                            ? ProcessImage(imageTag)
                             : string.Empty,
                         Title = title,
                         Category = category,
@@ -341,6 +341,15 @@ namespace Parser
             }
 
             return result;
+        }
+
+        private static string ProcessImage(string url)
+        {
+            if (!url.StartsWith("http"))
+            {
+                return $"{Url.TrimEnd('/')}/{url.TrimStart('/')}";
+            }
+            return url;
         }
     }
 }

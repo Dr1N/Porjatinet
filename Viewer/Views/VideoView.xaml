@@ -4,9 +4,60 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="100" 
-             d:DesignWidth="200">
-    <Grid>
-        <TextBlock>Hello</TextBlock>  
+             d:DesignHeight="200" 
+             d:DesignWidth="300"
+             ToolTip="{Binding Title, Mode=OneWay}">
+    
+    <Grid Margin="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Column="0"
+               Stretch="Uniform"
+               Source="{Binding Image, Mode=OneWay}"
+               ToolTip="{Binding Image, Mode=OneWay}"
+               Height="150"
+               Margin="0,0,10,0"/>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0"
+                       Text="Title"
+                       FontWeight="Bold"/>
+            <TextBlock Grid.Row="1"
+                       x:Name="Title"
+                       TextTrimming="CharacterEllipsis"
+                       ToolTip="{Binding Title, Mode=OneWay}"/>
+            <TextBlock Grid.Row="2"
+                       Text="Category"
+                       FontWeight="Bold"/>
+            <TextBlock Grid.Row="3"
+                       x:Name="Category"
+                       TextTrimming="CharacterEllipsis"
+                       ToolTip="{Binding Category, Mode=OneWay}"/>
+            <TextBlock Grid.Row="4"
+                       Text="Author"
+                       FontWeight="Bold"/>
+            <TextBlock Grid.Row="5"
+                       x:Name="Author"
+                       TextTrimming="CharacterEllipsis"
+                       ToolTip="{Binding Author, Mode=OneWay}"/>
+            <TextBlock Grid.Row="6"
+                       Text="Publish"
+                       FontWeight="Bold"/>
+            <TextBlock Grid.Row="7"
+                       x:Name="Publish"
+                       TextTrimming="CharacterEllipsis"
+                       ToolTip="{Binding Publish, Mode=OneWay}"/>
+        </Grid>
     </Grid>
 </UserControl>
