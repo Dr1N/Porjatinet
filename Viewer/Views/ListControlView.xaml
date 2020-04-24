@@ -20,6 +20,8 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" 
                        Text="All:"/>
@@ -37,6 +39,12 @@
                        Text="Selected:"/>
             <TextBlock Grid.Column="5" 
                        x:Name="SelectedVideo"
+                       FontWeight="Bold"
+                       Margin="10,0"/>
+            <TextBlock Grid.Column="6"
+                       Text="Num:"/>
+            <TextBlock Grid.Column="7" 
+                       x:Name="SelectedIndex"
                        FontWeight="Bold"
                        Margin="10,0"/>
         </Grid>

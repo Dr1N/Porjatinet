@@ -24,6 +24,8 @@ namespace Viewer.ViewModels
 
         public string SelectedVideo => List.IndexOf(_selectedVideo) != -1 ? (List.IndexOf(_selectedVideo) + 1).ToString() : "N/A";
 
+        public string SelectedIndex => _videos.IndexOf(_selectedVideo?.Video) != -1 ? (_videos.IndexOf(_selectedVideo.Video) + 1).ToString() : "N/A";
+
         public VideoViewModel SelectedList
         {
             get => _selectedVideo;
@@ -34,6 +36,7 @@ namespace Viewer.ViewModels
                     _selectedVideo = value;
                     NotifyOfPropertyChange();
                     NotifyOfPropertyChange(() => SelectedVideo);
+                    NotifyOfPropertyChange(() => SelectedIndex);
                     SendMessage();
                 }
             }
