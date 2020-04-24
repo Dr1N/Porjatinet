@@ -24,6 +24,8 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" 
                        Text="All:"/>
@@ -55,7 +57,17 @@
                       x:Name="AutoPlay"
                       VerticalAlignment="Center"
                       VerticalContentAlignment="Center"
-                      Margin="10,0"/>
+                      Margin="10,0,10,5"/>
+            <TextBox x:Name="ScrollTo"
+                     Grid.Column="10"
+                     Margin="5,0,5,5"
+                     Width="50"
+                     PreviewTextInput="ScrollTo_PreviewTextInput"/>
+            <Button x:Name="Scroll"
+                    Grid.Column="11"
+                    Content="Scroll"
+                    Margin="0,0,0,5"
+                    Padding="5,0"/>
         </Grid>
         <ListBox Grid.Row="1" x:Name="List">
             <ListBox.ItemTemplate>

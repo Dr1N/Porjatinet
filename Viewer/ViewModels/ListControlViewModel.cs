@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Viewer.Messages;
+using Viewer.Views;
 
 namespace Viewer.ViewModels
 {
@@ -28,6 +29,8 @@ namespace Viewer.ViewModels
 
         public bool AutoPlay { get; set; } = true;
 
+        public string ScrollTo { get; set; } = string.Empty;
+
         public VideoViewModel SelectedList
         {
             get => _selectedVideo;
@@ -40,6 +43,23 @@ namespace Viewer.ViewModels
                     NotifyOfPropertyChange(() => SelectedVideo);
                     NotifyOfPropertyChange(() => SelectedIndex);
                     SendMessage();
+                }
+            }
+        }
+
+        public void Scroll()
+        {
+            if (int.TryParse(ScrollTo, out int scroll)
+                && GetView() is ListControlView view)
+            {
+                scroll--;
+                if (0 < scroll && scroll < view.List.Items.Count)
+                {
+                    if (view.List.Items[scroll] is VideoViewModel item)
+                    {
+                        SelectedList = item;
+                        view.List.ScrollIntoView(SelectedList);
+                    }
                 }
             }
         }
