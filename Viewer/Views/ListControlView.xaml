@@ -22,6 +22,8 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Column="0" 
                        Text="All:"/>
@@ -47,6 +49,13 @@
                        x:Name="SelectedIndex"
                        FontWeight="Bold"
                        Margin="10,0"/>
+            <TextBlock Grid.Column="8"
+                       Text="Auto:"/>
+            <CheckBox Grid.Column="9"
+                      x:Name="AutoPlay"
+                      VerticalAlignment="Center"
+                      VerticalContentAlignment="Center"
+                      Margin="10,0"/>
         </Grid>
         <ListBox Grid.Row="1" x:Name="List">
             <ListBox.ItemTemplate>

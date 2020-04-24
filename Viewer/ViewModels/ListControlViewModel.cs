@@ -26,6 +26,8 @@ namespace Viewer.ViewModels
 
         public string SelectedIndex => _videos.IndexOf(_selectedVideo?.Video) != -1 ? (_videos.IndexOf(_selectedVideo.Video) + 1).ToString() : "N/A";
 
+        public bool AutoPlay { get; set; } = true;
+
         public VideoViewModel SelectedList
         {
             get => _selectedVideo;
@@ -61,7 +63,7 @@ namespace Viewer.ViewModels
 
         private void SendMessage()
         {
-            if (_selectedVideo == null)
+            if (_selectedVideo == null || !AutoPlay)
             {
                 return;
             }
