@@ -67,7 +67,7 @@
                      HorizontalAlignment="Stretch"
                      VerticalAlignment="Stretch"
                      local:WebBrowserHelper.Url="{Binding VideoSrc, Mode=OneWay}"
-                     MaxWidth="1000"
+                     MaxWidth="1500"
                      MaxHeight="1000"/>
     </Grid>
 </UserControl>
