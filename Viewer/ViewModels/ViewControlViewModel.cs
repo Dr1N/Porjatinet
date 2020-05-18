@@ -37,7 +37,6 @@ namespace Viewer.ViewModels
             {
                 VideoSrc = message.Video.VideoUrl;
                 NotifyOfPropertyChange(() => VideoSrc);
-               
             }
             PostUrl = message.Video.PostUrl;
             VideoUrl = message.Video.VideoUrl;
