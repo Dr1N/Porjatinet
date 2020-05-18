@@ -33,11 +33,14 @@ namespace Viewer.ViewModels
 
         public void Handle(VideoSelectedMessage message)
         {
+            if (message.AutoPlay)
+            {
+                VideoUrl = message.Video.VideoUrl;
+                NotifyOfPropertyChange(() => VideoUrl);
+            }
             PostUrl = message.Video.PostUrl;
-            VideoUrl = message.Video.VideoUrl;
             VideoSrc = message.Video.VideoUrl;
             NotifyOfPropertyChange(() => PostUrl);
-            NotifyOfPropertyChange(() => VideoUrl);
             NotifyOfPropertyChange(() => VideoSrc);
         }
     }

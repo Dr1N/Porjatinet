@@ -7,9 +7,12 @@ namespace Viewer.Messages
     {
         public Video Video { get; }
 
-        public VideoSelectedMessage(Video video)
+        public bool AutoPlay { get; set; }
+
+        public VideoSelectedMessage(Video video, bool autoPlay)
         {
             Video = video ?? throw new ArgumentNullException(nameof(video));
+            AutoPlay = autoPlay;
         }
     }
 }

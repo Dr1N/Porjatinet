@@ -83,11 +83,11 @@ namespace Viewer.ViewModels
 
         private void SendMessage()
         {
-            if (_selectedVideo == null || !AutoPlay)
+            if (_selectedVideo == null)
             {
                 return;
             }
-            _eventAggregator.PublishOnUIThread(new VideoSelectedMessage(_selectedVideo.Video));
+            _eventAggregator.PublishOnUIThread(new VideoSelectedMessage(_selectedVideo.Video, AutoPlay));
         }
 
         public void Handle(FilterChangedMessage message)
