@@ -35,13 +35,14 @@ namespace Viewer.ViewModels
         {
             if (message.AutoPlay)
             {
-                VideoUrl = message.Video.VideoUrl;
-                NotifyOfPropertyChange(() => VideoUrl);
+                VideoSrc = message.Video.VideoUrl;
+                NotifyOfPropertyChange(() => VideoSrc);
+               
             }
             PostUrl = message.Video.PostUrl;
-            VideoSrc = message.Video.VideoUrl;
+            VideoUrl = message.Video.VideoUrl;
+            NotifyOfPropertyChange(() => VideoUrl);
             NotifyOfPropertyChange(() => PostUrl);
-            NotifyOfPropertyChange(() => VideoSrc);
         }
     }
 }
